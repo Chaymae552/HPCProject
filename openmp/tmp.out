@@ -1,0 +1,5 @@
+Chargement de 10000 échantillons.
+BUILD Nov  9 2025 11:53:38  _OPENMP=201511
+OMP_NUM_THREADS=8 (max=8)
+Logging to output/leaky_timebased.csv
+TIME_MS: 9388.276 (threads=8, tasks=1)

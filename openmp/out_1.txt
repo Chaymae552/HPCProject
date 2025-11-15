@@ -1,0 +1,23 @@
+Chargement de 100 échantillons.
+Logging to output/leaky_timebased.csv
+Epoch 0, Loss: 0.591665, LR: 0.009996, Acc: 0.6300
+Epoch 1000, Loss: 0.313139, LR: 0.007141, Acc: 0.8400
+Epoch 2000, Loss: 0.303054, LR: 0.005554, Acc: 0.8300
+Epoch 3000, Loss: 0.295349, LR: 0.004545, Acc: 0.8300
+Epoch 4000, Loss: 0.290778, LR: 0.003846, Acc: 0.8300
+Epoch 5000, Loss: 0.284777, LR: 0.003333, Acc: 0.8400
+Epoch 6000, Loss: 0.277087, LR: 0.002941, Acc: 0.8500
+Epoch 7000, Loss: 0.262284, LR: 0.002631, Acc: 0.8500
+Epoch 8000, Loss: 0.243035, LR: 0.002381, Acc: 0.8600
+Epoch 9000, Loss: 0.221821, LR: 0.002174, Acc: 0.8900
+Epoch 10000, Loss: 0.204173, LR: 0.002000, Acc: 0.9000
+Epoch 11000, Loss: 0.191034, LR: 0.001852, Acc: 0.9200
+Epoch 12000, Loss: 0.180604, LR: 0.001724, Acc: 0.9300
+Epoch 13000, Loss: 0.172160, LR: 0.001613, Acc: 0.9400
+Epoch 14000, Loss: 0.164889, LR: 0.001515, Acc: 0.9400
+Epoch 15000, Loss: 0.158528, LR: 0.001428, Acc: 0.9600
+Epoch 16000, Loss: 0.153189, LR: 0.001351, Acc: 0.9600
+Epoch 17000, Loss: 0.148422, LR: 0.001282, Acc: 0.9600
+Epoch 18000, Loss: 0.144214, LR: 0.001219, Acc: 0.9700
+Epoch 19000, Loss: 0.140459, LR: 0.001163, Acc: 0.9700
+Poids sauvegardés dans W1.txt, b1.txt, W2.txt, b2.txt
