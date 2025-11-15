@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import argparse
 import csv
 import os
@@ -7,7 +6,6 @@ import matplotlib.pyplot as plt
 
 
 def load_curve(path):
-    """Return (epochs, losses, accuracies, lrs) from a log CSV."""
     epochs = []
     losses = []
     accs = []
