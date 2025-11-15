@@ -1,4 +1,3 @@
-// utils.c — plain C implementations + OpenMP (no BLAS)
 #include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,7 +9,6 @@
   #include <omp.h>
 #endif
 
-/* ---------- Safe Allocation ---------- */
 void* xmalloc(size_t nbytes) {
     void *p = malloc(nbytes);
     if (!p) {
@@ -29,7 +27,6 @@ void* xcalloc(size_t n, size_t sz) {
     return p;
 }
 
-/* ---------- Random (Box–Muller) ---------- */
 double randn(void) {
     static int hasSpare = 0;
     static double spare;
@@ -70,7 +67,6 @@ void add_bias(double *Z, double *b, int n, int p) {
             Z[i*p + j] += b[j];
 }
 
-// Row-wise softmax with max-shift for numerical stability
 void softmax(double *Z, double *P, int n, int p) {
     #pragma omp parallel for schedule(static)
     for (int i = 0; i < n; i++) {
@@ -90,7 +86,6 @@ void softmax(double *Z, double *P, int n, int p) {
     }
 }
 
-/* ---------- Dataset I/O ---------- */
 int count_lines(const char *filename) {
     FILE *fp = fopen(filename, "r");
     if (!fp) {
@@ -139,7 +134,6 @@ void load_y(const char *filename, int *y, int num_examples) {
     fclose(fp);
 }
 
-/* ---------- Learning-rate helper ---------- */
 double lr_value_iter(lr_schedule_t sched, double lr0, double decay,
                 int epoch, int step_every, double gamma)
 {
