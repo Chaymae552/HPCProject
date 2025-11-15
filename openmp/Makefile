@@ -1,4 +1,3 @@
-# Makefile — OpenMP build (GCC/Clang)
 CC      = gcc
 CFLAGS  = -O3 -march=native -Wall -std=c11 -fopenmp
 LDFLAGS = -lm -fopenmp
