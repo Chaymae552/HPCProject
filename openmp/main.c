@@ -1,13 +1,11 @@
-// main.c (OpenMP version) — const/time/exp/step schedules + robust CLI
-
 #include "model.h"
-#include "utils.h"     // brings lr_schedule_t and lr_value() declaration
+#include "utils.h"     
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
 #include <locale.h>
-#include <strings.h>   // strcasecmp (POSIX)
+#include <strings.h>   
 
 #ifdef _WIN32
   #include <direct.h>
@@ -21,11 +19,9 @@
   #include <omp.h>
 #endif
 
-/* step schedule globals live in utils.c; declare here to set from CLI */
 extern int    step_every;   // epochs between steps
 extern double step_gamma;   // multiplicative decay at each step
 
-/* small helpers */
 static int file_exists(const char *path) {
     FILE *f = fopen(path, "r");
     if (!f) return 0;
@@ -90,13 +86,11 @@ int main(int argc, char **argv) {
     step_every = 500;
     step_gamma = 0.5;
 
-    /* quick help */
     if (argc > 1 && strcmp(argv[1], "--help") == 0) {
         usage(argv[0]);
         return 0;
     }
 
-    /* legacy positional parsing: only if no flags are present */
     int saw_flag = 0;
     for (int i = 1; i < argc; ++i) {
         if (argv[i][0] == '-') { saw_flag = 1; break; }
@@ -114,7 +108,7 @@ int main(int argc, char **argv) {
         if (argc > 10) use_omp_tasks = atoi(argv[10]);
     }
 
-    /* flag parsing (overrides positional) */
+    /* flag parsing */
     for (int i = 1; i < argc; ++i) {
         if (!strcmp(argv[i], "--help")) { usage(argv[0]); return 0; }
 
@@ -123,7 +117,7 @@ int main(int argc, char **argv) {
             decay_type = (int)s; i++;
 
         } else if (!strcmp(argv[i], "--decay") && i+1 < argc) {
-            decay_rate = atof(argv[++i]);                   /* k for time/exp */
+            decay_rate = atof(argv[++i]);                  
 
         } else if (!strcmp(argv[i], "--step-size") && i+1 < argc) {
             step_every = atoi(argv[++i]);
@@ -194,7 +188,6 @@ int main(int argc, char **argv) {
 
     (void)MAKE_DIR("output");
 
-    /* banner (show effective schedule params) */
     const char *sched_name =
         (decay_type==LR_CONST) ? "const" :
         (decay_type==LR_TIME ) ? "time"  :
@@ -214,7 +207,6 @@ int main(int argc, char **argv) {
     }
 
     /* train */
-    /* map our print cadence into the existing API param name expected by model.c */
     int print_loss = (print_every > 0) ? print_every : 0;
     build_model(nn_hdim, num_passes, print_loss);
 
