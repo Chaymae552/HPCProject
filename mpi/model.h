@@ -34,4 +34,4 @@ void mlp_eval_range(const MLP *m, const double *X, const int *y,
                     long long *correct_out,
                     double *loss_sum_out);
 
-#endif /* MODEL_H */
+#endif 
